@@ -1,0 +1,28 @@
+{% extends 'base_tables.html' %}
+
+{% block title %}
+    Companies Page
+{% endblock %}
+
+{% block table_title %}
+    Companies
+{% endblock %}
+
+{% block new_form_btn %}
+    {% include 'includes/company_modals.html' %}
+    <button class="btn btn--primary" id="btnOpenModal">New Company</button>
+{% endblock %}
+
+{% block table_headings %}
+    <th scope="col">Name</th>
+    <th scope="col"># Locations</th>
+{% endblock %}
+
+{% block table_data %}
+    {% for company in companies %}
+        <tr>
+            <td><a href="#" class="company-link">{{ company.name }}</a></td>
+            <!-- <td>{{ company.locations }}</td> -->
+        </tr>
+    {% endfor %}
+{% endblock %}

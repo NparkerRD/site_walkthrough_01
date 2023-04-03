@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <nav class="nav flex">
+        <div class="nav_title">
+            Site Walkthrough
+        </div>
+        <div class="nav_menu">
+            <ul class="menu flex">
+                <li class="menu_link"><a href="{{url_for('home_page')}}">Home</a></li>
+                <li class="menu_link"><a href="{{url_for('companies_page')}}">Companies</a></li>
+            </ul>
+        </div>
+        <div class="nav_login-options">
+            <ul class="menu">
+                <li class="menu_link">
+                    <a href="#" class="btn--login">Log In</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main center flex-col">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+</body>
+</html>

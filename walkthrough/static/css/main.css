@@ -1,0 +1,149 @@
+/* import fonts from google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset defaults */
+:root {
+    /* Custom colors */
+    --cc-primary: #bbb;
+    --cc-secondary: #eee;
+    --cc-tertiary: #ddd;
+    --cc-dk-text: #555;
+
+
+    /* Font settings */
+    --ff-main: 'Inter', sans-serif;
+    --fw-light: 300;
+    --fw-reg: 400;
+    --fw-med: 500;
+    --fw-sb: 600;
+    --fw-bold: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--ff-main);
+}
+
+body {
+/*     border: 1px solid blue; */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a,
+ul,
+li {
+    text-decoration: none;
+    color: inherit;
+    list-style-type: none;
+}
+
+button {
+    border: none;
+}
+
+input[type=text] {
+    outline: none;
+}
+
+input[type="submit"] {
+    border: none;
+}
+
+/* Basic Components */
+.form {
+    background: var(--cc-tertiary);
+    color: var(--cc-primary);
+}
+
+.btn {
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 2.5rem;
+    width: 9rem;
+    font-size: .95rem;
+    transition: all .3s ease;
+}
+
+.btn:hover {
+    box-shadow: 0px 5px 15px rgba(0,0,0,.25);
+}
+
+.btn--primary {
+    background: var(--cc-primary);
+    color: var(--cc-secondary);
+}
+
+.btn--secondary {
+    background: var(--cc-tertiary);
+    color: var(var(--cc-dk-text));
+}
+
+.btn--tertiary {
+    background: var(--cc-dk-text);
+    color: var(--cc-secondary)
+}
+
+.btn--login{
+    cursor: pointer;
+}
+
+/* Flex classes */
+.flex {
+    display: flex;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Navigation Bar */
+.nav {
+/*     border: 1px solid; */
+    padding: 10px 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.nav_title,
+.nav_menu {
+/*     border: 1px dotted; */
+    padding: 10px;
+}
+
+.nav_menu .menu .menu_link {
+    margin: 5px;
+}
+
+.nav_title {
+    margin-right: auto;
+}
+
+.nav_login-options {
+    margin-left: auto;
+}
+
+
+/* Main Content */
+
+.main {
+    background: var(--cc-tertiary);
+    margin: auto 0;
+    height: 100vh;
+}
