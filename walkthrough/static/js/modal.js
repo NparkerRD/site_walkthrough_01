@@ -1,30 +1,34 @@
-const openBtn = document.querySelector("#btnOpenModal");
+const btnNewCompany = document.querySelector("#btn--newCompany");
 const cancelBtn = document.querySelector('#btnCancel');
-const modal = document.querySelector('.modal')
+const modalNewCompany = document.querySelector('#modal--newCompany')
+const btnNewLocation = document.querySelector('#btn--newLocation')
+const modalNewLocation = document.querySelector('#modal--newLocation')
 
-// Open Modal Logic - (may not be needed)
-openBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.classList.remove('hidden');
-})
+// Open New Company modal
+// Turn into function?
+if (btnNewCompany) {
+    btnNewCompany.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalNewCompany.classList.remove('hidden');
+    })
+} else {
+    console.log("New company button does NOT exist");
+}
 
-// Close Modal Logic
+// Close Modal Logic - Universal
 cancelBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    modal.classList.add('hidden')
+    cancelBtn.closest('.modal').classList.add('hidden');
 })
-// Modal from 850 Consulting
-// const modalEl = document.getElementById("modal");
-// const myModal = document.querySelector('dialog');
-// const requestConsultButtons = Array.from(document.getElementsByClassName("requestConsultBtn"));
-// const cancelBtn = document.getElementById("cancelBtn");
 
-// requestConsultButtons.forEach(btn => {
-//     btn.addEventListener('click', function(){
-//         modalEl.classList.remove('hidden');
-//     });
-// });
+// Open New Location modal
+if (btnNewLocation) {
+    btnNewLocation.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalNewLocation.classList.remove('hidden');
+    })
+} else {
+    console.log("New Location button does NOT exist");
+}
 
-// cancelBtn.addEventListener("click", function (){
-//     modalEl.classList.add('hidden');
-// });
+// Functions

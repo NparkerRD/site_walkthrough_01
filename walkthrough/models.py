@@ -10,6 +10,10 @@ class Company(db.Model):
         pass
 
     def delete_company(self):
+        # Note: Will have to be revisited later to include deleting all associated records
+        # c_to_del = Company.query.filter_by(name=self.name)
+        # db.session.delete(c_to_del)
+        # db.session.commit()
         pass
 
 

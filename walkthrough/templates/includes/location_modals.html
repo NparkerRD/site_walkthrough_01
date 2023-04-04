@@ -1,13 +1,17 @@
-<!-- Creating a New Company -->
+<!-- Creating a New Location -->
 <!-- Based on 850 Consulting -->
-<div class="modal hidden" id="modal--newCompany" aria-hidden="true">
+<div class="modal hidden" id="modal--newLocation" aria-hidden="true">
     <form method="post" class="form">
         {{ form.hidden_tag() }}
-        <h1 class="form_title">New Company</h1>
+        <h1 class="form_title">New Location</h1>
         <div class="form_fields">
             <div class="input-group">
-                {{ form.company_name.label() }}
-                {{ form.company_name() }}
+                {{ form.city.label() }}
+                {{ form.city() }}
+            </div>
+            <div class="input-group">
+                {{ form.state.label() }}
+                {{ form.state() }}
             </div>
         </div>
         <div class="form_buttons">
@@ -17,4 +21,4 @@
     </form>
 </div>
 
-<!-- Deleting a Company -->
+<!-- Deleting a Location -->
