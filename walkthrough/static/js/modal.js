@@ -10,7 +10,9 @@ const modalNewCompany = document.querySelector('#modal--newCompany');
 const modalNewLocation = document.querySelector('#modal--newLocation');
 
 // Get a list of delete buttons, then open the modal with the matching id
+const btnsDelCompany = document.querySelectorAll('.btn--delCompany');
 const btnsDelLocation = document.querySelectorAll('.btn--delLocation');
+
 // Get a list of cancel buttons, then close nearest modal
 const btnsCancel = document.querySelectorAll('.btn--cancel');
 
@@ -25,6 +27,26 @@ const checkButtonExists = function(btn, m) {
     }
 }
 
+// Opening modals for deleteing elements/records
+const openDeletionConfirmation = function(btns) {
+    btns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalConfirmDeletion = document.querySelector(btn.dataset['target']);
+            modalConfirmDeletion.classList.remove('hidden');
+        })
+    })
+}
+
+// Closing modals
+const closeModal = function(btns){
+    btns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            btn.closest('.modal').classList.add('hidden');
+        })
+    })
+}
 
 // Open New Company modal
 checkButtonExists(btnNewCompany, modalNewCompany);
@@ -32,28 +54,21 @@ checkButtonExists(btnNewCompany, modalNewCompany);
 // Open New Location modal
 checkButtonExists(btnNewLocation, modalNewLocation);
 
-// Close Modal Logic - Universal
-btnsCancel.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        btn.closest('.modal').classList.add('hidden')
-    })
-});
+// Open Delete Company modal
+openDeletionConfirmation(btnsDelCompany)
 
-// Opening Delete Location
-btnsDelLocation.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const modalDelLocation = document.querySelector(btn.dataset['target'])
-        console.log(modalDelLocation);
-        modalDelLocation.classList.remove('hidden')
-    })
-})
+// Open Delete Location modal
+openDeletionConfirmation(btnsDelLocation)
+
+// Close Modal Logic - Universal
+closeModal(btnsCancel)
+
 
 
 /*
 ADDRESS LATER:
     * Close other modals when new one is opened
     * Sort tables by columns
+    * Create logic for dismissing flashed message
 
 */

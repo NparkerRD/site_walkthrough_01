@@ -9,6 +9,11 @@
     --cc-tertiary: #ddd;
     --cc-dk-text: #555;
 
+    /* Notification Colors */
+    --cc-success: #9AF6A9;
+    --cc-danger: #F49292;
+    --cc-warning: #FCF788;
+
 
     /* Font settings */
     --ff-main: 'Inter', sans-serif;
@@ -139,6 +144,23 @@ input[type="submit"] {
     margin-left: auto;
 }
 
+
+/* Alerts Section */
+.alert {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+}
+
+.alert--success {
+    background: var(--cc-success);
+}
+
+.alert--danger {
+    background: var(--cc-danger);
+}
 
 /* Main Content */
 

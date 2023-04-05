@@ -22,7 +22,7 @@
 
 {% block table_data %}
     {% for location in locations %}
-    {% include 'includes/delete_modals.html' %}
+    {% include 'includes/deleteLocation_modal.html' %}
         <tr>
             <td><a href="#" class="location-link">{{ location.city }}</a></td>
             <td><a href="#" class="location-link">{{ location.state }}</a></td>

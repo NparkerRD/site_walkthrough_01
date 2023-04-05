@@ -28,11 +28,12 @@ def companies_page():
                 flash(f"Something went wrong when attempting to create company: {err_mg}", category='danger')
 
         # Delete Company logic
-        deleted_company = request.form.get('deleted_company')
-        d_company_obj = Company.query.filter_by(name=deleted_company).first()
-        if d_company_obj:
-            d_company_obj.delete_company()
-            flash(f"{d_company_obj.name} was deleted", category="danger")
+        # Inlcude getting all records (query all locations, and for each location query all sites, etc)
+        # May need functions to check all associated records
+        deleted_company = request.form.get('deleted_company') # value = company.id
+        d_company_obj = Company.query.filter_by(id=deleted_company).first()
+        db.session.delete(d_company_obj)
+        db.session.commit()
     companies = Company.query.all()
     return render_template('companies.html', form=cc_form, companies=companies, del_form=dc_form)
 

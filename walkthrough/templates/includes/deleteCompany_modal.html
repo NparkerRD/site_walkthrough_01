@@ -1,0 +1,18 @@
+<!-- Deleting a Company -->
+<div class="modal hidden" aria-hidden="true" id="modal--delCompany--{{ company.id}}">
+    <form method="post" class="form">
+        {{ del_form.hidden_tag() }}
+
+        <div class="form_title">
+            <h1>Delete {{ company.name }}</h1>
+        </div>
+        <div class="form_fields">
+            <h2>Are you sure you want to delete {{ company.name }}? </h2>
+        </div>
+        <div class="form_buttons">
+            <input type="hidden" name="deleted_company" id="deleted_company" value="{{company.id}}">
+            {{ del_form.submit(class="btn btn--danger") }}
+            <button class="btn btn--secondary btn--cancel">Cancel</button>
+        </div>
+    </form>
+</div>

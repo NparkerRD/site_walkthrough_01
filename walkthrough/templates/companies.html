@@ -21,10 +21,11 @@
 
 {% block table_data %}
     {% for company in companies %}
+    {% include 'includes/deleteCompany_modal.html' %}
         <tr>
             <td><a href="{{url_for('locations_page', company_name=company.name)}}" class="company-link">{{ company.name }}</a></td>
             <td>
-                <button class="btn btn--danger" data-target="#Modal-DelCompany--{{ company.id }}">Delete Company</button>
+                <button class="btn btn--danger btn--delCompany" data-target="#modal--delCompany--{{company.id}}">Delete Company</button>
             </td>
             <!-- <td><a href="#" class="company-locations"></a></td> -->
         </tr>
