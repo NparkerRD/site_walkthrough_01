@@ -24,7 +24,7 @@ class Location(db.Model):
     company_id = db.Column(db.Integer(), db.ForeignKey('company.id'))
     sites = db.relationship('Site', backref="site_location")
 
-    def create_location():
+    def create_location(self):
         pass
     
     def delete_location():

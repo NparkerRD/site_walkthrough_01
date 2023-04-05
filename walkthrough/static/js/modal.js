@@ -1,34 +1,59 @@
-const btnNewCompany = document.querySelector("#btn--newCompany");
+'use strict';
+
 const cancelBtn = document.querySelector('#btnCancel');
-const modalNewCompany = document.querySelector('#modal--newCompany')
-const btnNewLocation = document.querySelector('#btn--newLocation')
-const modalNewLocation = document.querySelector('#modal--newLocation')
+const btnNewCompany = document.querySelector("#btn--newCompany");
+const btnNewLocation = document.querySelector('#btn--newLocation');
+const btnDelCompany = document.querySelector('#btn--delCompany');
+const btnDelLocation = document.querySelector('#btn--delLocation');
 
-// Open New Company modal
-// Turn into function?
-if (btnNewCompany) {
-    btnNewCompany.addEventListener('click', (e) => {
-        e.preventDefault();
-        modalNewCompany.classList.remove('hidden');
-    })
-} else {
-    console.log("New company button does NOT exist");
-}
+const modalNewCompany = document.querySelector('#modal--newCompany');
+const modalNewLocation = document.querySelector('#modal--newLocation');
 
-// Close Modal Logic - Universal
-cancelBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    cancelBtn.closest('.modal').classList.add('hidden');
-})
-
-// Open New Location modal
-if (btnNewLocation) {
-    btnNewLocation.addEventListener('click', (e) => {
-        e.preventDefault();
-        modalNewLocation.classList.remove('hidden');
-    })
-} else {
-    console.log("New Location button does NOT exist");
-}
+// Get a list of delete buttons, then open the modal with the matching id
+const btnsDelLocation = document.querySelectorAll('.btn--delLocation');
+// Get a list of cancel buttons, then close nearest modal
+const btnsCancel = document.querySelectorAll('.btn--cancel');
 
 // Functions
+// Check if a modal button exists, then add an event listener
+const checkButtonExists = function(btn, m) {
+    if (btn) {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            m.classList.remove('hidden');
+        })
+    }
+}
+
+
+// Open New Company modal
+checkButtonExists(btnNewCompany, modalNewCompany);
+
+// Open New Location modal
+checkButtonExists(btnNewLocation, modalNewLocation);
+
+// Close Modal Logic - Universal
+btnsCancel.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        btn.closest('.modal').classList.add('hidden')
+    })
+});
+
+// Opening Delete Location
+btnsDelLocation.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const modalDelLocation = document.querySelector(btn.dataset['target'])
+        console.log(modalDelLocation);
+        modalDelLocation.classList.remove('hidden')
+    })
+})
+
+
+/*
+ADDRESS LATER:
+    * Close other modals when new one is opened
+    * Sort tables by columns
+
+*/

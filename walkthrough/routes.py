@@ -38,29 +38,39 @@ def companies_page():
 
 
 
-#LOCATION PAGE
-# @app.route('<company_name>/locations')
-@app.route('/locations')
-def locations_page():
-    # include way to specify which company/site the page is for
-    #       use something similar to @app.route('/<company_name>/locations')
-    #       https://exploreflask.com/en/latest/views.html
-    # TEMPORARY: displaying ALL locations for styling purposes; will display locations only related to company later
+#LOCATIONS PAGE
+@app.route('/<company_name>/locations', methods=['GET', 'POST'])
+def locations_page(company_name):
+    company = Company.query.filter_by(name=company_name).first()
     cl_form = CreateLocationForm()
     dl_form = DeleteLocationForm()
 
     if request.method == "POST":
         # Create Location logic
         if cl_form.validate_on_submit():
-            location_to_create = Location()
+            location_to_create = Location(city=cl_form.city.data, state=cl_form.state.data, company_id=company.id)
             db.session.add(location_to_create)
             db.session.commit()
             flash(f"Location added sucessfully!", category="success")
-            return redirect(url_for('locations_page'))
+            return redirect(url_for('locations_page', company_name=company.name))
         
         if cl_form.errors != {}:
             for err_mg in cl_form.errors.values():
                 flash(f"Something went wrong when attempting to create location: {err_mg}", category='danger')
 
-    return render_template('locations.html', form=cl_form)
+        # Delete Location logic
+        deleted_location = request.form.get('deleted_location') # value = location.id
+        d_location_obj = Location.query.filter_by(id=deleted_location).first()
+        db.session.delete(d_location_obj)
+        db.session.commit()
 
+
+    company_locations = Location.query.filter_by(company_id=company.id)
+
+    return render_template('locations.html', form=cl_form, d_form=dl_form, locations=company_locations)
+
+
+# SITES PAGE
+@app.route('/sites')
+def sites_page():
+    return render_template('home.html')

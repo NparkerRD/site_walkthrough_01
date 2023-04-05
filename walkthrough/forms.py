@@ -32,4 +32,4 @@ class CreateLocationForm(FlaskForm):
     
 
 class DeleteLocationForm(FlaskForm):
-    pass
+    submit = SubmitField(label="Delete Location")

@@ -22,11 +22,13 @@
 
 {% block table_data %}
     {% for location in locations %}
+    {% include 'includes/delete_modals.html' %}
         <tr>
-            <td><a href="#" class="location-link">{{ location.name }}</a></td>
+            <td><a href="#" class="location-link">{{ location.city }}</a></td>
+            <td><a href="#" class="location-link">{{ location.state }}</a></td>
             <td>
-                <button class="btn btn--danger" data-target="#Modal-DelLocation--{{ location.id }}">Delete Location</button>
-                <a class="btn btn--primary" href="{{url_for('locations_page')}}">View Location</a>
+                <button class="btn btn--danger btn--delLocation" data-target="#modal--delLocation--{{location.id}}">Delete Location</button>
+                <a class="btn btn--primary" href="{{url_for('sites_page')}}">View Location</a>
             </td>
             <!-- <td><a href="#" class="location-sites"></a></td> -->
         </tr>

@@ -1,0 +1,18 @@
+<!-- Deleting a Location -->
+<div class="modal hidden" aria-hidden="true" id="modal--delLocation--{{ location.id}}">
+    <form method="post" class="form">
+        <!-- {{ d_form.hidden_tag() }} -->
+
+        <div class="form_title">
+            <h1>Delete {{ location.city }}, {{ location.state }}</h1>
+        </div>
+        <div class="form_fields">
+            <h2>Are you sure you want to delete {{ location.city }}, {{ location.state }}? </h2>
+        </div>
+        <div class="form_buttons">
+            <input type="hidden" name="deleted_location" id="deleted_location" value="{{location.id}}">
+            {{ d_form.submit(class="btn btn--danger") }}
+            <button class="btn btn--secondary btn--cancel">Cancel</button>
+        </div>
+    </form>
+</div>

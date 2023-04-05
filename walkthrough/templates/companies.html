@@ -22,10 +22,9 @@
 {% block table_data %}
     {% for company in companies %}
         <tr>
-            <td><a href="#" class="company-link">{{ company.name }}</a></td>
+            <td><a href="{{url_for('locations_page', company_name=company.name)}}" class="company-link">{{ company.name }}</a></td>
             <td>
                 <button class="btn btn--danger" data-target="#Modal-DelCompany--{{ company.id }}">Delete Company</button>
-                <a class="btn btn--primary" href="{{url_for('locations_page')}}">View Company</a>
             </td>
             <!-- <td><a href="#" class="company-locations"></a></td> -->
         </tr>
