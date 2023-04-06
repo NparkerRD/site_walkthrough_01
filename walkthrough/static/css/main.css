@@ -152,6 +152,7 @@ input[type="submit"] {
     width: 100%;
     padding: 15px;
     display: flex;
+    padding-left: 35px;
 }
 
 .alert--success {
@@ -160,6 +161,15 @@ input[type="submit"] {
 
 .alert--danger {
     background: var(--cc-danger);
+}
+
+.alert--warning {
+    background: var(--cc-warning);
+}
+
+.dismiss-msg {
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 /* Main Content */

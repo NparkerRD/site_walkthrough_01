@@ -1,10 +1,7 @@
 'use strict';
 
-const cancelBtn = document.querySelector('#btnCancel');
 const btnNewCompany = document.querySelector("#btn--newCompany");
 const btnNewLocation = document.querySelector('#btn--newLocation');
-const btnDelCompany = document.querySelector('#btn--delCompany');
-const btnDelLocation = document.querySelector('#btn--delLocation');
 
 const modalNewCompany = document.querySelector('#modal--newCompany');
 const modalNewLocation = document.querySelector('#modal--newLocation');
@@ -17,23 +14,46 @@ const btnsDelLocation = document.querySelectorAll('.btn--delLocation');
 const btnsCancel = document.querySelectorAll('.btn--cancel');
 
 // Functions
+
+// Close open modals
+const closeOpenModals = function() {
+    const openModals = document.querySelectorAll('.modal--open');
+    openModals.forEach(modal => {
+        modal.classList.add('hidden');
+        modal.classList.remove('modal--open');
+    })
+};
+
+const openModal = function(modal){
+    modal.classList.remove('hidden');
+    modal.classList.add('modal--open');
+};
+
 // Check if a modal button exists, then add an event listener
 const checkButtonExists = function(btn, m) {
     if (btn) {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            m.classList.remove('hidden');
-        })
+            // 1) Close all other modals
+            closeOpenModals();
+
+            // 2) Display modal
+            openModal(m);
+        });
     }
-}
+};
 
 // Opening modals for deleteing elements/records
 const openDeletionConfirmation = function(btns) {
     btns.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            // 1) Close any open modals
+            closeOpenModals()
+
+            // 2) Display modal
             const modalConfirmDeletion = document.querySelector(btn.dataset['target']);
-            modalConfirmDeletion.classList.remove('hidden');
+            openModal(modalConfirmDeletion);
         })
     })
 }
@@ -44,6 +64,7 @@ const closeModal = function(btns){
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             btn.closest('.modal').classList.add('hidden');
+            btn.closest('.modal').classList.remove('modal--open')
         })
     })
 }
@@ -63,12 +84,16 @@ openDeletionConfirmation(btnsDelLocation)
 // Close Modal Logic - Universal
 closeModal(btnsCancel)
 
-
+// Dismissing flashed messages
+const btnsDismiss = document.querySelectorAll('.dismiss-msg');
+btnsDismiss.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        btn.parentElement.remove();
+    });
+});
 
 /*
 ADDRESS LATER:
-    * Close other modals when new one is opened
     * Sort tables by columns
-    * Create logic for dismissing flashed message
 
 */

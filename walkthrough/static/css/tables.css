@@ -30,9 +30,11 @@ td {
 
 .modal {
     position: absolute;
-    top: 25%;
     width: clamp(300px, 95%, 400px);
     height: clamp(500px, 90%, 550px);
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
 }
 
 .form {
